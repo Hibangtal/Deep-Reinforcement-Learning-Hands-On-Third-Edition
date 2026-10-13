@@ -3434,6 +3434,18 @@ def make_readme() -> str:
 
     > 这些是原创学习笔记和小型实现，不复制原书正文。公式符号尽量保持教材常用约定；若与具体脚本变量名不同，以语义为准。
 
+    ## 开始前与学完后
+
+    | 材料 | 用途 |
+    |---|---|
+    | [00 · 学习路线与入门诊断](00_Study_Roadmap.ipynb) | 摸底、选择路线、阶段过关标准 |
+    | [阶段考试](Milestone_Exams.ipynb) | 检查能否闭卷推导、实现和排错 |
+    | [可复现实验模板](Experiment_Template.ipynb) | 多随机种子、置信带、调参记录与报告规范 |
+    | [综合项目](Capstone_Projects.ipynb) | GridWorld、DQN、PPO/SAC 三档项目验收 |
+    | [掌握清单](LEARNING_CHECKLIST.md) | 用能力证据而不是阅读进度打卡 |
+    | [排错手册](DEBUGGING_PLAYBOOK.md) | 从环境契约到评估协议的排查顺序 |
+    | [中英术语表](GLOSSARY.md) | 快速查找常用概念及一句话解释 |
+
     ## 章节索引
 
     | 章 | Notebook | 原书英文主题 |
@@ -3449,7 +3461,7 @@ def make_readme() -> str:
 
     ## 维护说明
 
-    `build_notebooks.py` 是可复现生成器。修改内容后先运行 `python my_learning/build_notebooks.py`，再用 `python my_learning/validate_notebooks.py --execute` 检查结构、链接和代码。若要像当前交付版本一样缓存曲线输出，再运行 `jupyter nbconvert --execute --to notebook --inplace my_learning/Chapter*.ipynb`。
+    `build_notebooks.py` 生成章节，`build_mastery_materials.py` 生成跨章节材料。修改内容后运行两个生成器，再用 `python my_learning/validate_notebooks.py --execute` 检查结构、链接和代码。若要像当前交付版本一样缓存曲线输出，再运行 `jupyter nbconvert --execute --to notebook --inplace my_learning/*.ipynb`。
     """)
 
 
