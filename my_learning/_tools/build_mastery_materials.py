@@ -100,14 +100,30 @@ print("总分:", total, "/20；建议:", route)
         每阶段结束先做[阶段考试](../04_assessments/Milestone_Exams.ipynb)。正确率不是唯一标准：还必须能在不看答案时写出核心数据流。
         """),
         md(r"""
-        ## 3. 建议节奏（每周 6–8 小时）
+        ## 3. 建议节奏（按背景选一条）
 
-        - 第 1–2 周：01–05；重点是手算，不追求神经网络。
-        - 第 3–4 周：06–10；完成 DQN 项目和一次故障注入。
-        - 第 5–6 周：11–16；比较 REINFORCE、A2C、PPO 的数据使用方式。
-        - 第 7 周：17–18；理解无梯度优化和探索。
-        - 第 8 周：19–22；建立高级主题地图。
-        - 第 9–10 周：完成一个[综合项目](../03_guided_projects/Capstone_Projects.ipynb)，按[实验模板](../03_guided_projects/Experiment_Template.ipynb)出报告。
+        时间按**每周 8–10 小时**估算。估计偏保守：宁可提前完成，也不要因为“落后计划”而放弃。
+
+        **路线 1：会编程、没有机器学习基础（本仓库的主要目标读者）**
+
+        | 周次 | 内容 | 周末过关证据 |
+        |---|---|---|
+        | 1–6 | [预备篇](../01_prerequisites/Prerequisite00_Index.ipynb)（含 4B/5B/6B/7B 补课） | 入学测试概念题 ≥ 12/15，代码题全过 |
+        | 7–9 | Chapter01–05 | 手算小 MDP；从零写出 value iteration |
+        | 10 | [GridWorld 引导项目](../03_guided_projects/Guided_Project01_GridWorld.ipynb) | 关卡 A 通过 |
+        | 11–13 | Chapter06 + [DQN CartPole 项目](../03_guided_projects/Guided_Project02_DQN_CartPole.ipynb) | 能解释 replay、target network 和一次失败 |
+        | 14–17 | Chapter07–09（Chapter10 选读） | 关卡 B 通过；完成一次 DQN 扩展的消融对比 |
+        | 18–22 | Chapter11、12、15、16 | 关卡 C 通过；能从 loss 公式写出 A2C/PPO 更新 |
+        | 23–26 | 一个[综合项目](../03_guided_projects/Capstone_Projects.ipynb) | 按实验模板交付多 seed 报告 |
+        | 之后 | Chapter17–22 按兴趣选读 | 每个专题画清数据闭环 |
+
+        核心路线约 **6 个月**。Chapter13、14、19 需要额外的 NLP/LLM 知识和外部依赖，Chapter20–22 是独立专题，都不是主线必需。
+
+        **路线 2：已有机器学习/PyTorch 基础**
+
+        先做入学测试，只补错题；然后 Chapter01–06 用 3–4 周，07–12 用 4–5 周，15–16 用 2–3 周，再做综合项目。约 3 个月。
+
+        详细的章节前置知识、算力需求和外部资源见[长期学习计划](../05_reference/LONG_TERM_PLAN.md)。
 
         **每次学习闭环：**20 分钟阅读 → 20 分钟手算 → 30 分钟运行与改参 → 10 分钟闭卷复述 → 记录一个仍不理解的问题。
         """),

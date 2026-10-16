@@ -6,6 +6,12 @@ import json
 from pathlib import Path
 from textwrap import dedent
 
+import foundations_bandit
+import foundations_cnn
+import foundations_neural_net
+import foundations_probability
+from foundations_extras import math_extra, ml_extra, numpy_extra, pytorch_extra
+
 
 LEARNING_ROOT = Path(__file__).resolve().parent.parent
 OUT = LEARNING_ROOT / "01_prerequisites"
@@ -44,23 +50,30 @@ def index_cells() -> list[dict]:
         md(r"""
         # Prerequisite 00 · 零基础预备篇导航
 
-        [返回总目录](../README.md) · [完成后进入 Chapter01](../02_chapters/Chapter01.ipynb)
+        [返回总目录](../README.md) · [长期学习计划](../05_reference/LONG_TERM_PLAN.md) · [完成后进入 Chapter01](../02_chapters/Chapter01.ipynb)
 
         预备篇不是让你先学完“所有数学和深度学习”，而是补齐进入强化学习的最小工具箱。每个 notebook 都围绕后面会真实出现的代码和公式。
+
+        **给完全没有机器学习基础的你：**原书默认读者已经懂机器学习和 PyTorch。带 **B** 的 4 个 notebook（概率、神经网络从零、CNN/序列、老虎机）
+        是专门为“机器学习零基础”补的，不要跳过。每个 notebook 末尾都有**自动批改练习**：看到 `[通过]` 才算完成。
         """),
         md(r"""
         ## 推荐顺序
 
-        | 顺序 | Notebook | 学完能做什么 |
-        |---:|---|---|
-        | 1 | [Python 基础](Prerequisite01_Python.ipynb) | 读懂训练循环、函数和对象 |
-        | 2 | [NumPy](Prerequisite02_NumPy.ipynb) | 处理 state、batch、action indexing |
-        | 3 | [Matplotlib](Prerequisite03_Matplotlib.ipynb) | 画回报、移动平均和多 seed 置信带 |
-        | 4 | [数学与概率](Prerequisite04_Math.ipynb) | 理解期望、梯度、softmax 和 Bellman 记号 |
-        | 5 | [机器学习基础](Prerequisite05_Machine_Learning.ipynb) | 理解 loss、训练/验证、过拟合和梯度下降 |
-        | 6 | [PyTorch](Prerequisite06_PyTorch.ipynb) | 独立写出神经网络训练循环 |
-        | 7 | [Gymnasium](Prerequisite07_Gymnasium.ipynb) | 正确运行 episode、处理终止和 wrapper |
-        | 8 | [入学测试](Prerequisite08_Readiness_Check.ipynb) | 判断是否可以进入 RL 主线 |
+        | 顺序 | Notebook | 学完能做什么 | 建议时长 |
+        |---:|---|---|---:|
+        | 1 | [Python 基础](Prerequisite01_Python.ipynb) | 读懂训练循环、函数和对象 | 2–6 h |
+        | 2 | [NumPy](Prerequisite02_NumPy.ipynb) | 处理 state、batch、action indexing | 3–4 h |
+        | 3 | [Matplotlib](Prerequisite03_Matplotlib.ipynb) | 画回报、移动平均和多 seed 置信带 | 1–2 h |
+        | 4 | [数学：线性代数与微积分](Prerequisite04_Math.ipynb) | 理解矩阵 shape、梯度、softmax | 3–4 h |
+        | 4B | [概率、采样与蒙特卡洛](Prerequisite04B_Probability.ipynb) | 理解期望、方差、条件概率、log 概率、重要性采样 | 3–5 h |
+        | 5 | [机器学习基础](Prerequisite05_Machine_Learning.ipynb) | 理解 loss、梯度下降、分类、过拟合与数据划分 | 4–5 h |
+        | 5B | [神经网络从零开始](Prerequisite05B_Neural_Network_From_Scratch.ipynb) | 手写前向/反向传播，理解 Q 网络是什么 | 4–6 h |
+        | 6 | [PyTorch](Prerequisite06_PyTorch.ipynb) | 独立写出 MLP 训练循环、mini-batch、保存与 target 复制 | 4–6 h |
+        | 6B | [卷积网络与序列模型速成](Prerequisite06B_CNN_and_Sequences.ipynb) | 读懂 Atari CNN 与文本 LSTM 的 shape 流 | 4–6 h |
+        | 7 | [Gymnasium](Prerequisite07_Gymnasium.ipynb) | 正确运行 episode、处理终止和 wrapper | 2–3 h |
+        | 7B | [从多臂老虎机走进 RL](Prerequisite07B_Bandit_Bridge.ipynb) | 增量更新、探索与利用、第一个 Q-learning | 3–4 h |
+        | 8 | [入学测试](Prerequisite08_Readiness_Check.ipynb) | 判断是否可以进入 RL 主线 | 1–2 h |
 
         如果已经有基础，可以直接做入学测试；不会的题再回到对应预备章，不必机械重学全部内容。
         """),
@@ -70,12 +83,14 @@ def index_cells() -> list[dict]:
         进入 RL 前不要求：复杂 Python 元编程、NumPy 全部 API、Matplotlib 美化、严格实分析证明、大型 CNN/Transformer、分布式训练或自定义 CUDA。
 
         当前目标只有三个：**看懂数据形状、看懂优化过程、看懂环境交互**。遇到知识缺口再按需扩展。
+        Transformer/LLM 相关知识在 Chapter13、Chapter19 之前再补，见[长期学习计划](../05_reference/LONG_TERM_PLAN.md)中的“章节前置知识矩阵”。
         """),
         code(r"""
 # 修改为 True，查看自己还缺哪一块。
 finished = {
-    "Python": False, "NumPy": False, "Matplotlib": False, "Math": False,
-    "Machine Learning": False, "PyTorch": False, "Gymnasium": False,
+    "Python": False, "NumPy": False, "Matplotlib": False, "Math": False, "Probability (4B)": False,
+    "Machine Learning": False, "Neural Net From Scratch (5B)": False, "PyTorch": False,
+    "CNN & Sequences (6B)": False, "Gymnasium": False, "Bandit Bridge (7B)": False,
 }
 remaining = [name for name, done in finished.items() if not done]
 print("已完成:", sum(finished.values()), "/", len(finished))
@@ -84,9 +99,9 @@ print("下一步:", remaining[0] if remaining else "进入 Prerequisite08 入学
         md(r"""
         ## 时间建议
 
-        - 有 Python 基础：约 1–2 周完成 NumPy、数学、PyTorch 和 Gymnasium。
-        - 完全零基础：约 3–5 周，每天 1–2 小时。
-        - 每章都要运行代码并完成练习；只阅读会制造“好像会了”的错觉。
+        - 会编程、但没有机器学习基础：每周 8–10 小时，约 **5–7 周**完成预备篇（合计约 40–55 小时）。
+        - 编程也不熟：先用 [Python 中文官方教程](https://docs.python.org/zh-cn/3/tutorial/index.html) 补 2–4 周，再开始本篇。
+        - 每章都要运行代码并完成自动批改练习；只阅读会制造“好像会了”的错觉。
 
         时间不是过关条件。[入学测试](Prerequisite08_Readiness_Check.ipynb)通过才进入主线。
         """),
@@ -327,7 +342,7 @@ def math_cells() -> list[dict]:
         md(r"""
         # Prerequisite 04 · 数学与概率：只补 RL 必需部分
 
-        [上一章：Matplotlib](Prerequisite03_Matplotlib.ipynb) · [下一章：机器学习](Prerequisite05_Machine_Learning.ipynb)
+        [上一章：Matplotlib](Prerequisite03_Matplotlib.ipynb) · [下一章：概率与采样](Prerequisite04B_Probability.ipynb)
 
         **目标：**理解向量、矩阵、期望、方差、导数、链式法则、log、softmax 和交叉熵，不追求严格数学证明。
         """),
@@ -403,7 +418,7 @@ def ml_cells() -> list[dict]:
         md(r"""
         # Prerequisite 05 · 机器学习基础：训练不是背 API
 
-        [上一章：数学](Prerequisite04_Math.ipynb) · [下一章：PyTorch](Prerequisite06_PyTorch.ipynb)
+        [上一章：概率与采样](Prerequisite04B_Probability.ipynb) · [下一章：神经网络从零开始](Prerequisite05B_Neural_Network_From_Scratch.ipynb)
 
         **目标：**理解模型、loss、优化、训练/验证/测试、过拟合和 baseline。RL 虽没有现成标签，但同样依赖这些训练原则。
         """),
@@ -487,7 +502,7 @@ def pytorch_cells() -> list[dict]:
         md(r"""
         # Prerequisite 06 · PyTorch：从 tensor 到完整训练循环
 
-        [上一章：机器学习](Prerequisite05_Machine_Learning.ipynb) · [下一章：Gymnasium](Prerequisite07_Gymnasium.ipynb)
+        [上一章：神经网络从零开始](Prerequisite05B_Neural_Network_From_Scratch.ipynb) · [下一章：卷积网络与序列模型](Prerequisite06B_CNN_and_Sequences.ipynb)
 
         **目标：**理解 tensor、autograd、`nn.Module`、optimizer、`detach/no_grad`、device 和概率分布；独立写出一个小型训练循环。
         """),
@@ -583,7 +598,7 @@ def gym_cells() -> list[dict]:
         md(r"""
         # Prerequisite 07 · Gymnasium：环境交互契约
 
-        [上一章：PyTorch](Prerequisite06_PyTorch.ipynb) · [下一章：入学测试](Prerequisite08_Readiness_Check.ipynb)
+        [上一章：卷积网络与序列模型](Prerequisite06B_CNN_and_Sequences.ipynb) · [下一章：从多臂老虎机走进 RL](Prerequisite07B_Bandit_Bridge.ipynb)
 
         **目标：**正确使用 `make/reset/step`，理解 spaces、episode、`terminated/truncated`、seed 和 wrapper。Gymnasium 是接口，不是强化学习算法。
         """),
@@ -661,9 +676,9 @@ def readiness_cells() -> list[dict]:
         md(r"""
         # Prerequisite 08 · 强化学习入学测试
 
-        [预备篇导航](Prerequisite00_Index.ipynb) · [进入 Chapter01](../02_chapters/Chapter01.ipynb)
+        [上一章：从多臂老虎机走进 RL](Prerequisite07B_Bandit_Bridge.ipynb) · [预备篇导航](Prerequisite00_Index.ipynb) · [进入 Chapter01](../02_chapters/Chapter01.ipynb)
 
-        闭卷完成。不会的题不是失败，而是告诉你应该回到哪个预备章。建议概念题达到 8/10、代码测试全部通过后进入 RL 主线。
+        闭卷完成。不会的题不是失败，而是告诉你应该回到哪个预备章。建议概念题达到 12/15、代码测试全部通过后进入 RL 主线。
         """),
         md(r"""
         ## 概念题
@@ -678,11 +693,16 @@ def readiness_cells() -> list[dict]:
         8. `zero_grad/backward/step` 各做什么？
         9. `detach` 和 `no_grad` 的使用场景是什么？
         10. `terminated` 和 `truncated` 为什么影响 bootstrap？
+        11. 为什么用样本平均可以估计期望？样本数变成 4 倍，误差大约变成多少？
+        12. $\pi(a\mid s)$ 中竖线左右分别是什么？为什么策略梯度要用 log 概率？
+        13. 为什么神经网络必须有非线性激活？Q 表和 Q 网络有什么区别？
+        14. `(4,84,84)` 的输入经过 `Conv2d(4,32,8,stride=4)` 后 shape 是多少？为什么 Atari 要堆叠 4 帧？
+        15. 用一句话解释“新估计 = 旧估计 + 步长 × (目标 − 旧估计)”，并说出 ε=0 的贪心策略可能出什么问题。
         """),
         md(r"""
         <details><summary>参考要点</summary>
 
-        1. 可变序列、固定记录、键值配置；2. `(B,A)`；3. 对每个样本的动作维操作；4. 更滞后并可能掩盖突变；5. 中心趋势与离散程度；6. 负梯度是局部下降最快方向；7. 防止选择偏差和泄漏；8. 清梯度、反传、更新；9. 切断局部图与关闭整个块的梯度；10. 真终止没有未来价值，时间截断可能仍有。
+        1. 可变序列、固定记录、键值配置；2. `(B,A)`；3. 对每个样本的动作维操作；4. 更滞后并可能掩盖突变；5. 中心趋势与离散程度；6. 负梯度是局部下降最快方向；7. 防止选择偏差和泄漏；8. 清梯度、反传、更新；9. 切断局部图与关闭整个块的梯度；10. 真终止没有未来价值，时间截断可能仍有；11. 大数定律，误差约减半（$1/\sqrt n$）；12. 左边是结果（动作），右边是条件（状态）；乘积变求和、避免下溢、便于求导；13. 多层线性仍是线性；Q 表逐格存储、Q 网络用参数近似并能泛化；14. `(32,20,20)`，单帧看不出速度和方向；15. 用误差修正估计；可能过早锁定次优动作、永远不再探索。
 
         </details>
         """),
@@ -730,15 +750,39 @@ assert target(1, 10, .9, False) == 10
 print("terminal-mask test passed")
 """),
         md(r"""
+        ## 代码题 4：CNN 输出 shape 与 Q-learning 更新
+        """),
+        code(r"""
+import numpy as np
+import torch
+import torch.nn as nn
+
+conv = nn.Sequential(nn.Conv2d(4, 32, 8, stride=4), nn.ReLU(), nn.Conv2d(32, 64, 4, stride=2), nn.ReLU())
+with torch.no_grad():
+    out = conv(torch.zeros(2, 4, 84, 84))
+assert tuple(out.shape) == (2, 64, 9, 9), out.shape
+
+Q = np.zeros((2, 2)); Q[1] = [0.0, 4.0]
+s, a, r, s_next, alpha, gamma = 0, 1, 1.0, 1, 0.5, 0.9
+Q[s, a] += alpha * (r + gamma * Q[s_next].max() - Q[s, a])
+assert np.isclose(Q[0, 1], 2.3)
+print("CNN shape 与 Q-learning 更新测试通过")
+"""),
+        md(r"""
         ## 判定
 
-        - 概念 0–5：按顺序完成全部预备篇。
-        - 概念 6–7：只补错题对应章节，再重做代码题。
-        - 概念 8–10 且代码全过：进入 [Chapter01](../02_chapters/Chapter01.ipynb)。
+        - 概念 0–8：按顺序完成全部预备篇（包括带 B 的 4 个补课 notebook）。
+        - 概念 9–11：只补错题对应章节，再重做代码题。
+        - 概念 12–15 且代码全过：进入 [Chapter01](../02_chapters/Chapter01.ipynb)。
 
         通过后也不用背所有 API。真正重要的是：遇到 shape、梯度和环境问题时，知道怎样检查，而不是把它误认为 RL 算法失效。
         """),
     ]
+
+
+def insert_before_last(cells: list[dict], extra: list[dict]) -> list[dict]:
+    """Insert extra teaching/exercise cells before the closing "过关" cell."""
+    return cells[:-1] + extra + cells[-1:]
 
 
 def main() -> None:
@@ -746,12 +790,16 @@ def main() -> None:
     materials = {
         "Prerequisite00_Index": index_cells(),
         "Prerequisite01_Python": python_cells(),
-        "Prerequisite02_NumPy": numpy_cells(),
+        "Prerequisite02_NumPy": insert_before_last(numpy_cells(), numpy_extra()),
         "Prerequisite03_Matplotlib": matplotlib_cells(),
-        "Prerequisite04_Math": math_cells(),
-        "Prerequisite05_Machine_Learning": ml_cells(),
-        "Prerequisite06_PyTorch": pytorch_cells(),
+        "Prerequisite04_Math": insert_before_last(math_cells(), math_extra()),
+        foundations_probability.NAME: foundations_probability.cells(),
+        "Prerequisite05_Machine_Learning": insert_before_last(ml_cells(), ml_extra()),
+        foundations_neural_net.NAME: foundations_neural_net.cells(),
+        "Prerequisite06_PyTorch": insert_before_last(pytorch_cells(), pytorch_extra()),
+        foundations_cnn.NAME: foundations_cnn.cells(),
         "Prerequisite07_Gymnasium": gym_cells(),
+        foundations_bandit.NAME: foundations_bandit.cells(),
         "Prerequisite08_Readiness_Check": readiness_cells(),
     }
     for name, cells in materials.items():

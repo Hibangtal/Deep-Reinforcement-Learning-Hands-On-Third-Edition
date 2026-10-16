@@ -8,7 +8,11 @@ import argparse
 import contextlib
 import io
 import warnings
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from exercise_kit import selftest_notebook  # noqa: E402
 
 
 HERE = Path(__file__).resolve().parent.parent
@@ -21,12 +25,16 @@ SUPPLEMENTS = {
 PREREQUISITES = {
     "01_prerequisites/Prerequisite00_Index.ipynb": ["推荐顺序", "什么暂时不用学", "时间建议"],
     "01_prerequisites/Prerequisite01_Python.ipynb": ["数据：一个 transition", "控制流与函数", "类：把状态和行为"],
-    "01_prerequisites/Prerequisite02_NumPy.ipynb": ["数组、shape、dtype", "axis 与动作索引", "广播：方便，也危险"],
+    "01_prerequisites/Prerequisite02_NumPy.ipynb": ["数组、shape、dtype", "axis 与动作索引", "广播：方便，也危险", "自动批改练习"],
     "01_prerequisites/Prerequisite03_Matplotlib.ipynb": ["移动平均做了什么", "曲线阅读顺序"],
-    "01_prerequisites/Prerequisite04_Math.ipynb": ["向量、矩阵与加权和", "导数与链式法则", "softmax 与交叉熵"],
-    "01_prerequisites/Prerequisite05_Machine_Learning.ipynb": ["监督学习的最小闭环", "train / validation / test", "过拟合"],
-    "01_prerequisites/Prerequisite06_PyTorch.ipynb": ["Tensor 与 NumPy", "Autograd", "完整训练循环", "detach"],
+    "01_prerequisites/Prerequisite04_Math.ipynb": ["向量、矩阵与加权和", "导数与链式法则", "softmax 与交叉熵", "矩阵乘法一步步算", "自动批改练习"],
+    "01_prerequisites/Prerequisite04B_Probability.ipynb": ["随机变量与分布", "期望", "方差与标准误", "条件概率", "重要性采样", "自动批改练习"],
+    "01_prerequisites/Prerequisite05_Machine_Learning.ipynb": ["监督学习的最小闭环", "train / validation / test", "过拟合", "分类", "亲眼看到过拟合", "自动批改练习"],
+    "01_prerequisites/Prerequisite05B_Neural_Network_From_Scratch.ipynb": ["XOR", "激活函数", "前向传播", "反向传播", "梯度检查", "Q 网络", "自动批改练习"],
+    "01_prerequisites/Prerequisite06_PyTorch.ipynb": ["Tensor 与 NumPy", "Autograd", "完整训练循环", "detach", "mini-batch", "软更新", "自动批改练习"],
+    "01_prerequisites/Prerequisite06B_CNN_and_Sequences.ipynb": ["输出尺寸", "帧堆叠", "训练一个小 CNN", "序列模型", "自动批改练习"],
     "01_prerequisites/Prerequisite07_Gymnasium.ipynb": ["最小随机 agent", "Spaces 是数据契约", "停止 bootstrap"],
+    "01_prerequisites/Prerequisite07B_Bandit_Bridge.ipynb": ["增量平均", "探索与利用", "从老虎机到完整强化学习", "自动批改练习"],
     "01_prerequisites/Prerequisite08_Readiness_Check.ipynb": ["概念题", "NumPy batch", "PyTorch 训练循环", "终止语义"],
 }
 GUIDED = {
@@ -75,6 +83,7 @@ def main() -> None:
     notebooks = sorted((HERE / "02_chapters").glob("Chapter[0-9][0-9].ipynb"))
     assert len(notebooks) == 22, f"expected 22 notebooks, got {len(notebooks)}"
     failures: list[str] = []
+    exercise_total = [0]
     for path in notebooks:
         try:
             doc = json.loads(path.read_text(encoding="utf-8"))
@@ -133,11 +142,17 @@ def main() -> None:
             for text in required_text:
                 assert text in markdown, f"missing mastery section: {text}"
             assert execute_code_cells(doc, name, args.execute) >= 1
+            exercises = [c for c in doc["cells"] if c.get("metadata", {}).get("learning_role") == "exercise"]
+            if "自动批改练习" in required_text:
+                assert len(exercises) >= 3, f"expected at least three auto-checked exercises, got {len(exercises)}"
+            if exercises and args.execute:
+                selftest_notebook(doc, name)  # reference solutions must pass their own tests
+            exercise_total[0] += len(exercises)
             validate_local_links(markdown, path, failures)
         except Exception as exc:
             failures.append(f"{name}: {exc}")
 
-    for name in ["LEARNING_CHECKLIST.md", "DEBUGGING_PLAYBOOK.md", "GLOSSARY.md"]:
+    for name in ["LEARNING_CHECKLIST.md", "DEBUGGING_PLAYBOOK.md", "GLOSSARY.md", "LONG_TERM_PLAN.md"]:
         if not (HERE / "05_reference" / name).exists():
             failures.append(f"missing support document: {name}")
     for markdown_path in HERE.rglob("*.md"):
@@ -151,7 +166,7 @@ def main() -> None:
     assert coverage.exists(), "missing COVERAGE.md"
     coverage_text = coverage.read_text(encoding="utf-8")
     assert coverage_text.count("## [") == 22, "coverage audit must contain 22 chapter sections"
-    suffix = ", and code execution" if args.execute else ""
+    suffix = f", code execution, and {exercise_total[0]} exercise self-tests" if args.execute else ""
     total = len(notebooks) + len(SUPPLEMENTS) + len(PREREQUISITES) + len(GUIDED)
     print(f"Validated {total} notebooks: JSON, sections, anchors, local links{suffix} OK")
 

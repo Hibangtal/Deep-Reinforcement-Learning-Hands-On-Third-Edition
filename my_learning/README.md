@@ -8,7 +8,7 @@
 
 1. 第一次使用先打开[从这里开始](00_start_here/README.md)，不要直接跳进高级章节。
 2. 在项目根目录按 `requirements.txt` 建立 Python 3.11 环境，启动 `jupyter lab my_learning`。
-3. 完全零基础先完成预备篇；已有基础可直接做入学测试。
+3. 没有机器学习基础：先完成预备篇（含 4B/5B/6B/7B 四个补课 notebook 和自动批改练习）；已有基础可直接做入学测试。
 4. 每章按“手算 → 代码 → 改参 → 自测”学习，并在 Chapter05/06 后完成两个引导项目。
 5. Atari、MuJoCo、TextWorld、浏览器环境、MAgent 等重型章节按各章 `requirements.txt` 配置。
 
@@ -19,7 +19,8 @@
 | 材料 | 用途 |
 |---|---|
 | [从这里开始](00_start_here/README.md) | 环境、学习顺序和入门诊断 |
-| [零基础预备篇](01_prerequisites/Prerequisite00_Index.ipynb) | Python、NumPy、绘图、数学、ML、PyTorch、Gymnasium 与入学测试 |
+| [长期学习计划](05_reference/LONG_TERM_PLAN.md) | 6 个月路线、主线/选读章节、章节前置知识矩阵、算力与外部资源 |
+| [零基础预备篇](01_prerequisites/Prerequisite00_Index.ipynb) | Python、NumPy、绘图、数学、概率、ML、神经网络从零、PyTorch、CNN/序列、Gymnasium、老虎机与入学测试 |
 | [00 · 学习路线与入门诊断](00_start_here/00_Study_Roadmap.ipynb) | 摸底、选择路线、阶段过关标准 |
 | [阶段考试](04_assessments/Milestone_Exams.ipynb) | 检查能否闭卷推导、实现和排错 |
 | [可复现实验模板](03_guided_projects/Experiment_Template.ipynb) | 多随机种子、置信带、调参记录与报告规范 |
@@ -59,19 +60,19 @@
 
 ## 学习路线建议
 
-- **完全零基础：**环境与 Jupyter → Prerequisite00–08 → Chapter01–05 → GridWorld 项目 → Chapter06 → DQN 项目。
+- **没有机器学习基础：**环境与 Jupyter → Prerequisite00–08（含 04B、05B、06B、07B）→ Chapter01–05 → GridWorld 项目 → Chapter06 → DQN 项目。
 - **基础主线：**01 → 06，理解 MDP、Gym、PyTorch、Bellman、Q-learning 与 DQN。
 - **价值方法：**07 → 10，学习工程抽象、DQN 扩展、性能与交易环境建模。
 - **策略方法：**11 → 18，依次掌握 policy gradient、actor-critic、连续控制、PPO/SAC 与探索。
 - **高级应用：**19 → 22，学习 RLHF、MuZero、离散优化与多智能体 RL。
 
-## 维护说明
+**主线与选读：**主线是 01–09、11、12、15、16；10、17、18 为推荐选读；13、14、19–22 是需要额外前置知识或外部依赖的专题，按兴趣选择。详见[长期学习计划](05_reference/LONG_TERM_PLAN.md)。
 
 ## 目录结构
 
 ```text
 00_start_here       环境、使用方式与学习路线
-01_prerequisites    零基础预备篇与入学测试
+01_prerequisites    零基础预备篇（含自动批改练习）与入学测试
 02_chapters         原书 22 章伴读
 03_guided_projects  完整引导项目、实验模板、开放项目
 04_assessments      阶段考试
@@ -81,4 +82,4 @@ _tools              生成与验证脚本
 
 ## 维护说明
 
-`_tools` 中四个 build 脚本分别生成章节、预备篇、综合材料和引导项目。修改内容后运行生成器，再执行 `python my_learning/_tools/validate_notebooks.py --execute`。
+`_tools` 中四个 build 脚本分别生成章节、预备篇、综合材料和引导项目；`foundations_*.py` 是预备篇补课内容，`exercise_kit.py` 是自动批改练习工具。修改内容后运行生成器，再执行 `python my_learning/_tools/validate_notebooks.py --execute`（会同时用参考答案自检全部练习）。
