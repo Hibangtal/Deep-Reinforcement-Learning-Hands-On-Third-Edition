@@ -1,7 +1,14 @@
-# 00 · 从这里开始
+# 入门操作资料（按章节提示打开）
 
-1. 完全零基础先看 [环境、Jupyter 与报错阅读](01_Environment_and_Jupyter.ipynb)。
-2. 使用 [学习路线与入门诊断](00_Study_Roadmap.ipynb)判断起点，并阅读[长期学习计划](../05_reference/LONG_TERM_PLAN.md)了解整体节奏。
-3. 没有机器学习、PyTorch 或 Gymnasium 基础时，进入[零基础预备篇](../01_prerequisites/README.md)（含 4 个专门的补课 notebook 和自动批改练习）。
+**日常学习统一从[START_HERE](../START_HERE.md)进入。** 本目录不再提供第二套学习顺序。
 
-不要按文件数量追进度。完成每个阶段的“过关证据”后再继续。
+| 资料 | 什么时候使用 |
+|---|---|
+| [第一周操作手册](FIRST_WEEK.md) | 阶段一P00–P05引用时，只做当前课号 |
+| [Python小步练习](02_Python_Baby_Steps.ipynb) | 按当前Python章节做对应题，不提前做完整套 |
+| [分阶段环境配置](SETUP.md) | P00检查解释器、P06准备数组工具、P11准备PyTorch |
+| [公式慢讲](FORMULA_LAB.md) | 当前章节的手算卡住时查对应概念 |
+| [环境与Jupyter详解](01_Environment_and_Jupyter.ipynb) | P11依赖准备好后查阅；不是零基础第一步 |
+| [原版路线与诊断](00_Study_Roadmap.ipynb) | 已有编程基础时补充诊断；零基础顺序以START_HERE为准 |
+
+用完返回当前学习章节，完成反馈与本章总结。

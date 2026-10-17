@@ -1,0 +1,1349 @@
+{
+  "version": 1,
+  "lessons": [
+    {
+      "id": "P00",
+      "title": "第一次运行：终端、文件、解释器",
+      "track": "core",
+      "requires": [],
+      "guide": "06_lessons/01_Python基础/01_P00_运行程序.md",
+      "evidence": "两次数值分别为 5、6；记录解释器路径和完整运行命令。",
+      "quiz": [
+        {
+          "question": "python hello.py 应输入在哪里？",
+          "choices": [
+            "终端",
+            "Python 文件正文",
+            "浏览器地址栏"
+          ],
+          "answer": 0,
+          "explanation": "终端让解释器读取文件；文件正文放 Python 语句。",
+          "remedy": "重做 06_lessons/01_Python基础/01_P00_运行程序.md 的公式与实践；核对：两次数值分别为 5、6；记录解释器路径和完整运行命令。"
+        },
+        {
+          "question": "把文件内容改了，旧输出会自动更新吗？",
+          "choices": [
+            "会",
+            "需要保存并重新运行",
+            "必须重装 Python"
+          ],
+          "answer": 1,
+          "explanation": "磁盘代码与一次运行的输出是两件事。",
+          "remedy": "重做 06_lessons/01_Python基础/01_P00_运行程序.md 的公式与实践；核对：两次数值分别为 5、6；记录解释器路径和完整运行命令。"
+        }
+      ],
+      "chapters": [],
+      "stage": "阶段一 · Python基础",
+      "chapter_number": 1
+    },
+    {
+      "id": "P01",
+      "title": "变量、数字、字符串与报错",
+      "track": "core",
+      "requires": [
+        "P00"
+      ],
+      "guide": "06_lessons/01_Python基础/02_P01_变量与报错.md",
+      "evidence": "数值5；能解释 TypeError 和变量未定义的 NameError。不要为这些错误安装软件。",
+      "quiz": [
+        {
+          "question": "reward=2; reward=reward+3 后值是？",
+          "choices": [
+            "2",
+            "3",
+            "5"
+          ],
+          "answer": 2,
+          "explanation": "右侧先用旧值2，得到5后替换绑定。",
+          "remedy": "重做 06_lessons/01_Python基础/02_P01_变量与报错.md 的公式与实践；核对：数值5；能解释 TypeError 和变量未定义的 NameError。不要为这些错误安装软件。"
+        },
+        {
+          "question": "'2' + '3' 的结果？",
+          "choices": [
+            "5",
+            "'23'",
+            "6"
+          ],
+          "answer": 1,
+          "explanation": "两个字符串相加是拼接。",
+          "remedy": "重做 06_lessons/01_Python基础/02_P01_变量与报错.md 的公式与实践；核对：数值5；能解释 TypeError 和变量未定义的 NameError。不要为这些错误安装软件。"
+        }
+      ],
+      "chapters": [],
+      "stage": "阶段一 · Python基础",
+      "chapter_number": 2
+    },
+    {
+      "id": "P02",
+      "title": "列表、索引、字典与一条经验",
+      "track": "core",
+      "requires": [
+        "P01"
+      ],
+      "guide": "06_lessons/01_Python基础/03_P02_列表与字典.md",
+      "evidence": "追加后总和6、长度4、均值1.5；state是状态，action是动作，reward是环境返回的奖励，next_state是下一状态，done是结束标记。",
+      "quiz": [
+        {
+          "question": "[4,8,9][1] 是？",
+          "choices": [
+            "4",
+            "8",
+            "9"
+          ],
+          "answer": 1,
+          "explanation": "索引1指第二项。",
+          "remedy": "重做 06_lessons/01_Python基础/03_P02_列表与字典.md 的公式与实践；核对：追加后总和6、长度4、均值1.5；state是状态，action是动作，reward是环境返回的奖励，next_state是下一状态，done是结束标记。"
+        },
+        {
+          "question": "config={'gamma':0.9} 怎样取折扣？",
+          "choices": [
+            "config[0]",
+            "config['gamma']",
+            "config.gamma"
+          ],
+          "answer": 1,
+          "explanation": "字典按键访问。",
+          "remedy": "重做 06_lessons/01_Python基础/03_P02_列表与字典.md 的公式与实践；核对：追加后总和6、长度4、均值1.5；state是状态，action是动作，reward是环境返回的奖励，next_state是下一状态，done是结束标记。"
+        }
+      ],
+      "chapters": [],
+      "stage": "阶段一 · Python基础",
+      "chapter_number": 3
+    },
+    {
+      "id": "P03",
+      "title": "if、for、while：把重复工作交给程序",
+      "track": "core",
+      "requires": [
+        "P02"
+      ],
+      "guide": "06_lessons/01_Python基础/04_P03_判断与循环.md",
+      "evidence": "每轮累计为1、1、3。while必须改变退出条件涉及的变量；若停不下用Ctrl+C。",
+      "quiz": [
+        {
+          "question": "range(3) 产生哪些值？",
+          "choices": [
+            "1,2,3",
+            "0,1,2,3",
+            "0,1,2"
+          ],
+          "answer": 2,
+          "explanation": "包含0，不包含右端3。",
+          "remedy": "重做 06_lessons/01_Python基础/04_P03_判断与循环.md 的公式与实践；核对：每轮累计为1、1、3。while必须改变退出条件涉及的变量；若停不下用Ctrl+C。"
+        },
+        {
+          "question": "total=0 放进每轮循环会怎样？",
+          "choices": [
+            "每轮清零，无法累加历史",
+            "结果不变",
+            "自动保存历史"
+          ],
+          "answer": 0,
+          "explanation": "初始化应在循环外。",
+          "remedy": "重做 06_lessons/01_Python基础/04_P03_判断与循环.md 的公式与实践；核对：每轮累计为1、1、3。while必须改变退出条件涉及的变量；若停不下用Ctrl+C。"
+        }
+      ],
+      "chapters": [],
+      "stage": "阶段一 · Python基础",
+      "chapter_number": 4
+    },
+    {
+      "id": "P04",
+      "title": "函数、return 与第一次折扣回报",
+      "track": "core",
+      "requires": [
+        "P03"
+      ],
+      "guide": "06_lessons/01_Python基础/05_P04_函数与回报.md",
+      "evidence": "[1,2,3]结果分别为1、6、2.75。print只显示，return才把值交还调用者。",
+      "quiz": [
+        {
+          "question": "函数只print(3)，没有return，返回什么？",
+          "choices": [
+            "3",
+            "None",
+            "'3'"
+          ],
+          "answer": 1,
+          "explanation": "函数默认返回None。",
+          "remedy": "重做 06_lessons/01_Python基础/05_P04_函数与回报.md 的公式与实践；核对：[1,2,3]结果分别为1、6、2.75。print只显示，return才把值交还调用者。"
+        },
+        {
+          "question": "[2,4]，gamma=0.5，回报？",
+          "choices": [
+            "6",
+            "3",
+            "4"
+          ],
+          "answer": 2,
+          "explanation": "2+0.5×4=4；奖励和折扣回报不同。",
+          "remedy": "重做 06_lessons/01_Python基础/05_P04_函数与回报.md 的公式与实践；核对：[1,2,3]结果分别为1、6、2.75。print只显示，return才把值交还调用者。"
+        }
+      ],
+      "chapters": [],
+      "stage": "阶段一 · Python基础",
+      "chapter_number": 5
+    },
+    {
+      "id": "P05",
+      "title": "对象、模块与第一个原仓库程序",
+      "track": "core",
+      "requires": [
+        "P04"
+      ],
+      "guide": "06_lessons/01_Python基础/06_P05_对象与模块.md",
+      "evidence": "运行10步；总奖励在[0,10)且每次可能不同。能指出选择动作、执行动作、累积奖励分别在哪行。",
+      "quiz": [
+        {
+          "question": "__init__ 的主要职责？",
+          "choices": [
+            "每步训练网络",
+            "创建实例时初始化数据",
+            "结束程序"
+          ],
+          "answer": 1,
+          "explanation": "构造实例时初始化steps_left等属性。",
+          "remedy": "重做 06_lessons/01_Python基础/06_P05_对象与模块.md 的公式与实践；核对：运行10步；总奖励在[0,10)且每次可能不同。能指出选择动作、执行动作、累积奖励分别在哪行。"
+        },
+        {
+          "question": "随机agent分数变高能证明学会了吗？",
+          "choices": [
+            "能",
+            "不能，代码没有更新策略",
+            "运行10步就算学会"
+          ],
+          "answer": 1,
+          "explanation": "需要查学习更新和独立评估，不能只看一次分数。",
+          "remedy": "重做 06_lessons/01_Python基础/06_P05_对象与模块.md 的公式与实践；核对：运行10步；总奖励在[0,10)且每次可能不同。能指出选择动作、执行动作、累积奖励分别在哪行。"
+        }
+      ],
+      "chapters": [
+        2
+      ],
+      "stage": "阶段一 · Python基础",
+      "chapter_number": 6
+    },
+    {
+      "id": "P06",
+      "title": "NumPy 与绘图：读懂一批数据",
+      "track": "core",
+      "requires": [
+        "P05"
+      ],
+      "guide": "06_lessons/02_数学与机器学习/01_P06_数组与绘图.md",
+      "evidence": "Q矩阵shape=(2,2)；max是数值，argmax是索引。曲线横轴说明是episode还是step，不能只展示平滑线。",
+      "quiz": [
+        {
+          "question": "shape=(8,4)的batch有几条样本？",
+          "choices": [
+            "4",
+            "8",
+            "32"
+          ],
+          "answer": 1,
+          "explanation": "首维约定为batch，第二维为特征。",
+          "remedy": "重做 06_lessons/02_数学与机器学习/01_P06_数组与绘图.md 的公式与实践；核对：Q矩阵shape=(2,2)；max是数值，argmax是索引。曲线横轴说明是episode还是step，不能只展示平滑线。"
+        },
+        {
+          "question": "[1,3]的argmax是？",
+          "choices": [
+            "3",
+            "0",
+            "1"
+          ],
+          "answer": 2,
+          "explanation": "返回最大元素所在索引。",
+          "remedy": "重做 06_lessons/02_数学与机器学习/01_P06_数组与绘图.md 的公式与实践；核对：Q矩阵shape=(2,2)；max是数值，argmax是索引。曲线横轴说明是episode还是step，不能只展示平滑线。"
+        }
+      ],
+      "chapters": [],
+      "stage": "阶段二 · 数学与机器学习",
+      "chapter_number": 1
+    },
+    {
+      "id": "P07",
+      "title": "数学第一步：加权和、导数和链式法则",
+      "track": "core",
+      "requires": [
+        "P06"
+      ],
+      "guide": "06_lessons/02_数学与机器学习/02_P07_导数与链式法则.md",
+      "evidence": "能说明梯度下降为什么减去梯度；维度不匹配时先检查内维，不能盲目reshape。",
+      "quiz": [
+        {
+          "question": "w=1，L=(w−3)²，梯度是？",
+          "choices": [
+            "4",
+            "−4",
+            "2"
+          ],
+          "answer": 1,
+          "explanation": "2×(1−3)=−4。",
+          "remedy": "重做 06_lessons/02_数学与机器学习/02_P07_导数与链式法则.md 的公式与实践；核对：能说明梯度下降为什么减去梯度；维度不匹配时先检查内维，不能盲目reshape。"
+        },
+        {
+          "question": "(8,4) @ (4,2) 的shape？",
+          "choices": [
+            "(8,2)",
+            "(4,4)",
+            "(8,4,2)"
+          ],
+          "answer": 0,
+          "explanation": "内维4相消，保留外维8、2。",
+          "remedy": "重做 06_lessons/02_数学与机器学习/02_P07_导数与链式法则.md 的公式与实践；核对：能说明梯度下降为什么减去梯度；维度不匹配时先检查内维，不能盲目reshape。"
+        }
+      ],
+      "chapters": [],
+      "stage": "阶段二 · 数学与机器学习",
+      "chapter_number": 2
+    },
+    {
+      "id": "P08",
+      "title": "概率：期望、采样和条件",
+      "track": "core",
+      "requires": [
+        "P07"
+      ],
+      "guide": "06_lessons/02_数学与机器学习/03_P08_概率与期望.md",
+      "evidence": "记录理论均值与两次样本均值，解释样本均值不必精确等于1；更多样本通常更稳定，不保证每次误差都更小。",
+      "quiz": [
+        {
+          "question": "0和4的概率为0.75和0.25，期望？",
+          "choices": [
+            "2",
+            "1",
+            "4"
+          ],
+          "answer": 1,
+          "explanation": "期望是概率加权和。",
+          "remedy": "重做 06_lessons/02_数学与机器学习/03_P08_概率与期望.md 的公式与实践；核对：记录理论均值与两次样本均值，解释样本均值不必精确等于1；更多样本通常更稳定，不保证每次误差都更小。"
+        },
+        {
+          "question": "单次奖励一定等于期望吗？",
+          "choices": [
+            "一定",
+            "样本多就每次都等于",
+            "不一定"
+          ],
+          "answer": 2,
+          "explanation": "这个例子单次只能取0或4。",
+          "remedy": "重做 06_lessons/02_数学与机器学习/03_P08_概率与期望.md 的公式与实践；核对：记录理论均值与两次样本均值，解释样本均值不必精确等于1；更多样本通常更稳定，不保证每次误差都更小。"
+        }
+      ],
+      "chapters": [],
+      "stage": "阶段二 · 数学与机器学习",
+      "chapter_number": 3
+    },
+    {
+      "id": "P09",
+      "title": "机器学习：预测、损失、训练与验证",
+      "track": "core",
+      "requires": [
+        "P08"
+      ],
+      "guide": "06_lessons/02_数学与机器学习/04_P09_损失与验证.md",
+      "evidence": "提交初始/最终loss和验证误差；能解释训练误差下降、验证误差升高为何值得警惕。",
+      "quiz": [
+        {
+          "question": "预测3、真实1，平方误差？",
+          "choices": [
+            "2",
+            "4",
+            "1"
+          ],
+          "answer": 1,
+          "explanation": "(3−1)²=4。",
+          "remedy": "重做 06_lessons/02_数学与机器学习/04_P09_损失与验证.md 的公式与实践；核对：提交初始/最终loss和验证误差；能解释训练误差下降、验证误差升高为何值得警惕。"
+        },
+        {
+          "question": "每次用测试集挑参数会？",
+          "choices": [
+            "使测试不再是独立评价",
+            "保证泛化",
+            "不影响结论"
+          ],
+          "answer": 0,
+          "explanation": "选择过程已利用测试信息。",
+          "remedy": "重做 06_lessons/02_数学与机器学习/04_P09_损失与验证.md 的公式与实践；核对：提交初始/最终loss和验证误差；能解释训练误差下降、验证误差升高为何值得警惕。"
+        }
+      ],
+      "chapters": [],
+      "stage": "阶段二 · 数学与机器学习",
+      "chapter_number": 4
+    },
+    {
+      "id": "P10",
+      "title": "神经网络：从一个神经元到反向传播",
+      "track": "core",
+      "requires": [
+        "P09"
+      ],
+      "guide": "06_lessons/02_数学与机器学习/05_P10_神经网络与反传.md",
+      "evidence": "手算z=1、激活1；梯度检查比较数值梯度与反向梯度。XOR需要非线性，堆叠纯线性层仍是线性映射。",
+      "quiz": [
+        {
+          "question": "ReLU(−2)等于？",
+          "choices": [
+            "−2",
+            "2",
+            "0"
+          ],
+          "answer": 2,
+          "explanation": "ReLU取输入与0中的较大者。",
+          "remedy": "重做 06_lessons/02_数学与机器学习/05_P10_神经网络与反传.md 的公式与实践；核对：手算z=1、激活1；梯度检查比较数值梯度与反向梯度。XOR需要非线性，堆叠纯线性层仍是线性映射。"
+        },
+        {
+          "question": "为什么做数值梯度检查？",
+          "choices": [
+            "替代所有训练",
+            "检验手写反向传播",
+            "提高环境奖励"
+          ],
+          "answer": 1,
+          "explanation": "小扰动近似导数可与解析梯度交叉验证。",
+          "remedy": "重做 06_lessons/02_数学与机器学习/05_P10_神经网络与反传.md 的公式与实践；核对：手算z=1、激活1；梯度检查比较数值梯度与反向梯度。XOR需要非线性，堆叠纯线性层仍是线性映射。"
+        }
+      ],
+      "chapters": [],
+      "stage": "阶段二 · 数学与机器学习",
+      "chapter_number": 5
+    },
+    {
+      "id": "P11",
+      "title": "PyTorch：亲手写训练循环",
+      "track": "core",
+      "requires": [
+        "P10"
+      ],
+      "guide": "06_lessons/02_数学与机器学习/06_P11_PyTorch训练循环.md",
+      "evidence": "能打印参数.grad，解释detach与no_grad；能用state_dict保存/恢复后验证同输入同输出。",
+      "quiz": [
+        {
+          "question": "backward通常做什么？",
+          "choices": [
+            "计算梯度",
+            "自动选择动作",
+            "保存模型"
+          ],
+          "answer": 0,
+          "explanation": "更新参数由optimizer.step执行。",
+          "remedy": "重做 06_lessons/02_数学与机器学习/06_P11_PyTorch训练循环.md 的公式与实践；核对：能打印参数.grad，解释detach与no_grad；能用state_dict保存/恢复后验证同输入同输出。"
+        },
+        {
+          "question": "target值不应接收梯度时用？",
+          "choices": [
+            "增加batch",
+            "detach或no_grad",
+            "提高学习率"
+          ],
+          "answer": 1,
+          "explanation": "让目标在本次优化中视作常数。",
+          "remedy": "重做 06_lessons/02_数学与机器学习/06_P11_PyTorch训练循环.md 的公式与实践；核对：能打印参数.grad，解释detach与no_grad；能用state_dict保存/恢复后验证同输入同输出。"
+        }
+      ],
+      "chapters": [
+        3
+      ],
+      "stage": "阶段二 · 数学与机器学习",
+      "chapter_number": 6
+    },
+    {
+      "id": "R01",
+      "title": "进入RL：状态、动作、回报与策略",
+      "track": "core",
+      "requires": [
+        "P11"
+      ],
+      "guide": "06_lessons/03_表格强化学习/01_R01_强化学习基本概念.md",
+      "evidence": "写出奖励序列[0,0,1]、gamma=0.9时起点回报0.81；解释探索为什么可能短期降分。",
+      "quiz": [
+        {
+          "question": "gamma=0.9，[0,0,1]的起点回报？",
+          "choices": [
+            "1",
+            "0.9",
+            "0.81"
+          ],
+          "answer": 2,
+          "explanation": "第三次奖励折扣两次。",
+          "remedy": "重做 06_lessons/03_表格强化学习/01_R01_强化学习基本概念.md 的公式与实践；核对：写出奖励序列[0,0,1]、gamma=0.9时起点回报0.81；解释探索为什么可能短期降分。"
+        },
+        {
+          "question": "ε-greedy中ε的作用？",
+          "choices": [
+            "控制随机探索比例",
+            "控制网络层数",
+            "保证最优"
+          ],
+          "answer": 0,
+          "explanation": "少量探索用于获得未尝试动作的信息。",
+          "remedy": "重做 06_lessons/03_表格强化学习/01_R01_强化学习基本概念.md 的公式与实践；核对：写出奖励序列[0,0,1]、gamma=0.9时起点回报0.81；解释探索为什么可能短期降分。"
+        }
+      ],
+      "chapters": [
+        1
+      ],
+      "stage": "阶段三 · 表格强化学习",
+      "chapter_number": 1
+    },
+    {
+      "id": "R02",
+      "title": "环境接口：一次episode怎样结束",
+      "track": "core",
+      "requires": [
+        "R01"
+      ],
+      "guide": "06_lessons/03_表格强化学习/02_R02_环境交互接口.md",
+      "evidence": "清楚区分reset返回(obs,info)和step返回的五项。记录episode长度与随机基线，暂时不追求高分。",
+      "quiz": [
+        {
+          "question": "一般Gymnasium step返回几项？",
+          "choices": [
+            "3",
+            "4",
+            "5"
+          ],
+          "answer": 2,
+          "explanation": "observation,reward,terminated,truncated,info。",
+          "remedy": "重做 06_lessons/03_表格强化学习/02_R02_环境交互接口.md 的公式与实践；核对：清楚区分reset返回(obs,info)和step返回的五项。记录episode长度与随机基线，暂时不追求高分。"
+        },
+        {
+          "question": "真正terminal的下一状态价值应？",
+          "choices": [
+            "继续累加",
+            "不加入目标",
+            "改成负奖励"
+          ],
+          "answer": 1,
+          "explanation": "terminal后没有任务内未来回报。",
+          "remedy": "重做 06_lessons/03_表格强化学习/02_R02_环境交互接口.md 的公式与实践；核对：清楚区分reset返回(obs,info)和step返回的五项。记录episode长度与随机基线，暂时不追求高分。"
+        }
+      ],
+      "chapters": [
+        2
+      ],
+      "stage": "阶段三 · 表格强化学习",
+      "chapter_number": 2
+    },
+    {
+      "id": "R03",
+      "title": "交叉熵法：先学优秀轨迹",
+      "track": "core",
+      "requires": [
+        "R02"
+      ],
+      "guide": "06_lessons/03_表格强化学习/03_R03_交叉熵方法.md",
+      "evidence": "手动筛选保留5与8的轨迹；解释为什么稀疏奖励导致早期难以选出好样本。",
+      "quiz": [
+        {
+          "question": "CEM应保留哪些轨迹来拟合？",
+          "choices": [
+            "回报较好的",
+            "loss最大的",
+            "长度固定为1的"
+          ],
+          "answer": 0,
+          "explanation": "精英筛选按轨迹回报。",
+          "remedy": "重做 06_lessons/03_表格强化学习/03_R03_交叉熵方法.md 的公式与实践；核对：手动筛选保留5与8的轨迹；解释为什么稀疏奖励导致早期难以选出好样本。"
+        },
+        {
+          "question": "把选中动作概率从0.2提高到0.8，−log概率怎样？",
+          "choices": [
+            "上升",
+            "不变",
+            "下降"
+          ],
+          "answer": 2,
+          "explanation": "负log损失鼓励标签动作概率变高。",
+          "remedy": "重做 06_lessons/03_表格强化学习/03_R03_交叉熵方法.md 的公式与实践；核对：手动筛选保留5与8的轨迹；解释为什么稀疏奖励导致早期难以选出好样本。"
+        }
+      ],
+      "chapters": [
+        4
+      ],
+      "stage": "阶段三 · 表格强化学习",
+      "chapter_number": 3
+    },
+    {
+      "id": "R04",
+      "title": "Bellman：从回报拆项到值迭代",
+      "track": "core",
+      "requires": [
+        "R03"
+      ],
+      "guide": "06_lessons/03_表格强化学习/04_R04_Bellman与值迭代.md",
+      "evidence": "写一张旧V→各动作价值→新V表；能区分策略求值与求最优，完成阶段考试关卡A。",
+      "quiz": [
+        {
+          "question": "概率加权和在处理什么？",
+          "choices": [
+            "动作编号大小",
+            "可能下一状态的不确定性",
+            "网络参数数量"
+          ],
+          "answer": 1,
+          "explanation": "按转移概率对可能结果取期望。",
+          "remedy": "重做 06_lessons/03_表格强化学习/04_R04_Bellman与值迭代.md 的公式与实践；核对：写一张旧V→各动作价值→新V表；能区分策略求值与求最优，完成阶段考试关卡A。"
+        },
+        {
+          "question": "1+0.9×2等于？",
+          "choices": [
+            "2.8",
+            "3",
+            "1.8"
+          ],
+          "answer": 0,
+          "explanation": "即时奖励加折扣后的下一状态价值。",
+          "remedy": "重做 06_lessons/03_表格强化学习/04_R04_Bellman与值迭代.md 的公式与实践；核对：写一张旧V→各动作价值→新V表；能区分策略求值与求最优，完成阶段考试关卡A。"
+        }
+      ],
+      "chapters": [
+        5
+      ],
+      "stage": "阶段三 · 表格强化学习",
+      "chapter_number": 4
+    },
+    {
+      "id": "R05",
+      "title": "Q-learning与第一个完整GridWorld",
+      "track": "core",
+      "requires": [
+        "R04"
+      ],
+      "guide": "06_lessons/03_表格强化学习/05_R05_Q学习与GridWorld.md",
+      "evidence": "至少记录3个seed的随机与训练后成功率、训练预算。成绩不佳先查terminal/reward/exploration，不把跑完视为成功。",
+      "quiz": [
+        {
+          "question": "上述例子的new_Q？",
+          "choices": [
+            "4.6",
+            "3.3",
+            "2.3"
+          ],
+          "answer": 1,
+          "explanation": "向4.6移动一半，从2变3.3。",
+          "remedy": "重做 06_lessons/03_表格强化学习/05_R05_Q学习与GridWorld.md 的公式与实践；核对：至少记录3个seed的随机与训练后成功率、训练预算。成绩不佳先查terminal/reward/exploration，不把跑完视为成功。"
+        },
+        {
+          "question": "模型未知的Q-learning更新使用？",
+          "choices": [
+            "必须有完整转移表",
+            "一次经验样本",
+            "必须有专家标签"
+          ],
+          "answer": 1,
+          "explanation": "用采样transition近似Bellman更新。",
+          "remedy": "重做 06_lessons/03_表格强化学习/05_R05_Q学习与GridWorld.md 的公式与实践；核对：至少记录3个seed的随机与训练后成功率、训练预算。成绩不佳先查terminal/reward/exploration，不把跑完视为成功。"
+        }
+      ],
+      "chapters": [
+        6
+      ],
+      "stage": "阶段三 · 表格强化学习",
+      "chapter_number": 5
+    },
+    {
+      "id": "R06",
+      "title": "DQN：把Q表换成网络",
+      "track": "core",
+      "requires": [
+        "R05"
+      ],
+      "guide": "06_lessons/04_深度价值方法/01_R06_DQN与经验回放.md",
+      "evidence": "交environment→replay→batch→target→loss数据图，以及至少3个seed的评估分布。CPU只运行小环境；不承诺固定轮数必收敛。",
+      "quiz": [
+        {
+          "question": "target=3、预测=1，平方loss？",
+          "choices": [
+            "2",
+            "4",
+            "−2"
+          ],
+          "answer": 1,
+          "explanation": "(1−3)²=4。",
+          "remedy": "重做 06_lessons/04_深度价值方法/01_R06_DQN与经验回放.md 的公式与实践；核对：交environment→replay→batch→target→loss数据图，以及至少3个seed的评估分布。CPU只运行小环境；不承诺固定轮数必收敛。"
+        },
+        {
+          "question": "target network作用？",
+          "choices": [
+            "输出人类标签",
+            "稳定bootstrap目标",
+            "代替环境"
+          ],
+          "answer": 1,
+          "explanation": "较慢更新的目标减少追逐不断变化的自身估计。",
+          "remedy": "重做 06_lessons/04_深度价值方法/01_R06_DQN与经验回放.md 的公式与实践；核对：交environment→replay→batch→target→loss数据图，以及至少3个seed的评估分布。CPU只运行小环境；不承诺固定轮数必收敛。"
+        }
+      ],
+      "chapters": [
+        6
+      ],
+      "stage": "阶段四 · 深度价值方法",
+      "chapter_number": 1
+    },
+    {
+      "id": "R07",
+      "title": "高层库：认出封装中的同一条数据流",
+      "track": "core",
+      "requires": [
+        "R06"
+      ],
+      "guide": "06_lessons/04_深度价值方法/02_R07_理解高层库.md",
+      "evidence": "提交组件对应表和n步手算；不能只展示调用库后出现Solved。",
+      "quiz": [
+        {
+          "question": "两步后bootstrap的折扣幂是？",
+          "choices": [
+            "gamma",
+            "gamma²",
+            "2×gamma"
+          ],
+          "answer": 1,
+          "explanation": "经历两次转移才到尾部价值。",
+          "remedy": "重做 06_lessons/04_深度价值方法/02_R07_理解高层库.md 的公式与实践；核对：提交组件对应表和n步手算；不能只展示调用库后出现Solved。"
+        },
+        {
+          "question": "封装库可以省掉终止语义检查吗？",
+          "choices": [
+            "不可以",
+            "可以",
+            "只看版本号即可"
+          ],
+          "answer": 0,
+          "explanation": "封装仍有环境和经验契约。",
+          "remedy": "重做 06_lessons/04_深度价值方法/02_R07_理解高层库.md 的公式与实践；核对：提交组件对应表和n步手算；不能只展示调用库后出现Solved。"
+        }
+      ],
+      "chapters": [
+        7
+      ],
+      "stage": "阶段四 · 深度价值方法",
+      "chapter_number": 2
+    },
+    {
+      "id": "R08",
+      "title": "DQN扩展：一次只增加一个机制",
+      "track": "core",
+      "requires": [
+        "R07"
+      ],
+      "guide": "06_lessons/04_深度价值方法/03_R08_DQN扩展.md",
+      "evidence": "提交一次单因素对比（3个seed），列出未控制因素；解释n-step、Noisy、PER、Dueling、分布式价值各解决哪一类问题。",
+      "quiz": [
+        {
+          "question": "上面Double DQN取的下一状态值？",
+          "choices": [
+            "5",
+            "4",
+            "2"
+          ],
+          "answer": 2,
+          "explanation": "online选择索引1，target在索引1评价为2。",
+          "remedy": "重做 06_lessons/04_深度价值方法/03_R08_DQN扩展.md 的公式与实践；核对：提交一次单因素对比（3个seed），列出未控制因素；解释n-step、Noisy、PER、Dueling、分布式价值各解决哪一类问题。"
+        },
+        {
+          "question": "同时改网络、探索、学习率可证明某一机制有效吗？",
+          "choices": [
+            "可以",
+            "不可以",
+            "分数高就可以"
+          ],
+          "answer": 1,
+          "explanation": "混杂因素使因果归因不清楚。",
+          "remedy": "重做 06_lessons/04_深度价值方法/03_R08_DQN扩展.md 的公式与实践；核对：提交一次单因素对比（3个seed），列出未控制因素；解释n-step、Noisy、PER、Dueling、分布式价值各解决哪一类问题。"
+        }
+      ],
+      "chapters": [
+        8
+      ],
+      "stage": "阶段四 · 深度价值方法",
+      "chapter_number": 3
+    },
+    {
+      "id": "R09",
+      "title": "实验反馈：曲线、速度与公平比较",
+      "track": "core",
+      "requires": [
+        "R08"
+      ],
+      "guide": "06_lessons/04_深度价值方法/04_R09_实验与公平比较.md",
+      "evidence": "提交回报—环境步数与回报—时间两张图、均值及离散程度，不丢失败seed。",
+      "quiz": [
+        {
+          "question": "比较样本效率应优先固定什么？",
+          "choices": [
+            "文件名",
+            "训练墙钟时间",
+            "环境交互步数"
+          ],
+          "answer": 2,
+          "explanation": "以相同交互预算比较学得多快。",
+          "remedy": "重做 06_lessons/04_深度价值方法/04_R09_实验与公平比较.md 的公式与实践；核对：提交回报—环境步数与回报—时间两张图、均值及离散程度，不丢失败seed。"
+        },
+        {
+          "question": "loss下降是否保证回报上升？",
+          "choices": [
+            "不保证",
+            "保证",
+            "只要GPU足够快就保证"
+          ],
+          "answer": 0,
+          "explanation": "损失拟合当前目标，不直接等同于策略表现。",
+          "remedy": "重做 06_lessons/04_深度价值方法/04_R09_实验与公平比较.md 的公式与实践；核对：提交回报—环境步数与回报—时间两张图、均值及离散程度，不丢失败seed。"
+        }
+      ],
+      "chapters": [
+        9
+      ],
+      "stage": "阶段四 · 深度价值方法",
+      "chapter_number": 4
+    },
+    {
+      "id": "R10",
+      "title": "策略梯度：从概率到更新方向",
+      "track": "core",
+      "requires": [
+        "R09"
+      ],
+      "guide": "06_lessons/05_策略与连续控制/01_R10_策略梯度.md",
+      "evidence": "提交逐符号推导与源码变量对照，说明高于baseline的动作倾向于被强化，并非所有采样动作都无条件加概率。",
+      "quiz": [
+        {
+          "question": "为何policy loss常有负号？",
+          "choices": [
+            "奖励总为负",
+            "优化器最小化，而目标要最大化",
+            "为了防止报错"
+          ],
+          "answer": 1,
+          "explanation": "把梯度上升目标取负变成下降。",
+          "remedy": "重做 06_lessons/05_策略与连续控制/01_R10_策略梯度.md 的公式与实践；核对：提交逐符号推导与源码变量对照，说明高于baseline的动作倾向于被强化，并非所有采样动作都无条件加概率。"
+        },
+        {
+          "question": "状态baseline主要用途？",
+          "choices": [
+            "减少梯度估计方差",
+            "删除所有探索",
+            "改变环境奖励函数"
+          ],
+          "answer": 0,
+          "explanation": "满足条件的baseline不改变期望梯度。",
+          "remedy": "重做 06_lessons/05_策略与连续控制/01_R10_策略梯度.md 的公式与实践；核对：提交逐符号推导与源码变量对照，说明高于baseline的动作倾向于被强化，并非所有采样动作都无条件加概率。"
+        }
+      ],
+      "chapters": [
+        11
+      ],
+      "stage": "阶段五 · 策略与连续控制",
+      "chapter_number": 1
+    },
+    {
+      "id": "R11",
+      "title": "Actor-Critic：给策略配一个评价器",
+      "track": "core",
+      "requires": [
+        "R10"
+      ],
+      "guide": "06_lessons/05_策略与连续控制/02_R11_Actor与Critic.md",
+      "evidence": "记录优势、策略熵、value loss与评估回报；能解释A2C不是两个网络互相比赛。",
+      "quiz": [
+        {
+          "question": "例子中的优势为？",
+          "choices": [
+            "2.8",
+            "−0.3",
+            "0.3"
+          ],
+          "answer": 2,
+          "explanation": "1+0.9×2−2.5=0.3。",
+          "remedy": "重做 06_lessons/05_策略与连续控制/02_R11_Actor与Critic.md 的公式与实践；核对：记录优势、策略熵、value loss与评估回报；能解释A2C不是两个网络互相比赛。"
+        },
+        {
+          "question": "critic主要估计什么？",
+          "choices": [
+            "动作价值/状态价值等回报信息",
+            "代码行数",
+            "人类身份"
+          ],
+          "answer": 0,
+          "explanation": "评价器提供价值估计来辅助策略更新。",
+          "remedy": "重做 06_lessons/05_策略与连续控制/02_R11_Actor与Critic.md 的公式与实践；核对：记录优势、策略熵、value loss与评估回报；能解释A2C不是两个网络互相比赛。"
+        }
+      ],
+      "chapters": [
+        12
+      ],
+      "stage": "阶段五 · 策略与连续控制",
+      "chapter_number": 2
+    },
+    {
+      "id": "R12",
+      "title": "连续动作：从动作编号到数值控制",
+      "track": "core",
+      "requires": [
+        "R11"
+      ],
+      "guide": "06_lessons/05_策略与连续控制/03_R12_连续动作.md",
+      "evidence": "[-1,1]映射到[-2,4]时，u=0得到1。提交动作饱和检查表，不把离散DQN直接套连续空间。",
+      "quiz": [
+        {
+          "question": "u=0映射到[-2,4]为？",
+          "choices": [
+            "0",
+            "1",
+            "2"
+          ],
+          "answer": 1,
+          "explanation": "取区间中点(-2+4)/2。",
+          "remedy": "重做 06_lessons/05_策略与连续控制/03_R12_连续动作.md 的公式与实践；核对：[-1,1]映射到[-2,4]时，u=0得到1。提交动作饱和检查表，不把离散DQN直接套连续空间。"
+        },
+        {
+          "question": "DDPG的critic输入通常包括？",
+          "choices": [
+            "仅奖励",
+            "仅时间",
+            "状态与动作"
+          ],
+          "answer": 2,
+          "explanation": "Q(s,a)要评价一个具体动作。",
+          "remedy": "重做 06_lessons/05_策略与连续控制/03_R12_连续动作.md 的公式与实践；核对：[-1,1]映射到[-2,4]时，u=0得到1。提交动作饱和检查表，不把离散DQN直接套连续空间。"
+        }
+      ],
+      "chapters": [
+        15
+      ],
+      "stage": "阶段五 · 策略与连续控制",
+      "chapter_number": 3
+    },
+    {
+      "id": "R13",
+      "title": "PPO：比率、优势与裁剪",
+      "track": "core",
+      "requires": [
+        "R12"
+      ],
+      "guide": "06_lessons/05_策略与连续控制/04_R13_PPO比率与裁剪.md",
+      "evidence": "正优势目标2.4，负优势目标−2.8；提交四种ratio/优势方向表，完成关卡C中PPO题。",
+      "quiz": [
+        {
+          "question": "ratio1.4、A=−2、ε=.2，min目标？",
+          "choices": [
+            "−2.4",
+            "−2.8",
+            "2.4"
+          ],
+          "answer": 1,
+          "explanation": "min(−2.8,−2.4)=−2.8，负优势时不能直接取裁剪项。",
+          "remedy": "重做 06_lessons/05_策略与连续控制/04_R13_PPO比率与裁剪.md 的公式与实践；核对：正优势目标2.4，负优势目标−2.8；提交四种ratio/优势方向表，完成关卡C中PPO题。"
+        },
+        {
+          "question": "old policy应在同一批多epoch中不断跟着更新吗？",
+          "choices": [
+            "应该",
+            "不应该",
+            "只在loss大时应该"
+          ],
+          "answer": 1,
+          "explanation": "old概率是收集该批数据时固定的参照。",
+          "remedy": "重做 06_lessons/05_策略与连续控制/04_R13_PPO比率与裁剪.md 的公式与实践；核对：正优势目标2.4，负优势目标−2.8；提交四种ratio/优势方向表，完成关卡C中PPO题。"
+        }
+      ],
+      "chapters": [
+        16
+      ],
+      "stage": "阶段五 · 策略与连续控制",
+      "chapter_number": 4
+    },
+    {
+      "id": "R14",
+      "title": "SAC与毕业项目：独立实现和诊断",
+      "track": "core",
+      "requires": [
+        "R13"
+      ],
+      "guide": "06_lessons/05_策略与连续控制/05_R14_SAC与毕业项目.md",
+      "evidence": "交可重跑命令、版本、配置、种子、原始曲线、失败记录与推导；由导师/助手复核。只完成选择题不能宣称毕业，也不要求跑完整MuJoCo长训练。",
+      "quiz": [
+        {
+          "question": "SAC温度alpha主要权衡？",
+          "choices": [
+            "回报与熵",
+            "文件大小与速度",
+            "训练集与测试集比例"
+          ],
+          "answer": 0,
+          "explanation": "熵权重影响随机性偏好。",
+          "remedy": "重做 06_lessons/05_策略与连续控制/05_R14_SAC与毕业项目.md 的公式与实践；核对：交可重跑命令、版本、配置、种子、原始曲线、失败记录与推导；由导师/助手复核。只完成选择题不能宣称毕业，也不要求跑完整MuJoCo长训练。"
+        },
+        {
+          "question": "毕业最有说服力的证据？",
+          "choices": [
+            "看完所有视频",
+            "一个最好seed截图",
+            "独立实现、多seed评估、失败诊断与复现记录"
+          ],
+          "answer": 2,
+          "explanation": "能力来自可检查的实现与实验，不是观看数量。",
+          "remedy": "重做 06_lessons/05_策略与连续控制/05_R14_SAC与毕业项目.md 的公式与实践；核对：交可重跑命令、版本、配置、种子、原始曲线、失败记录与推导；由导师/助手复核。只完成选择题不能宣称毕业，也不要求跑完整MuJoCo长训练。"
+        }
+      ],
+      "chapters": [
+        16
+      ],
+      "stage": "阶段五 · 策略与连续控制",
+      "chapter_number": 5
+    },
+    {
+      "id": "O10",
+      "title": "股票环境：时间切分与交易成本",
+      "track": "optional",
+      "requires": [
+        "R09"
+      ],
+      "guide": "06_lessons/06_选修专题/01_O10_股票交易.md",
+      "evidence": "提交费用前后收益对照与泄漏检查；这是环境建模实验，不把回测直接当真实收益。",
+      "quiz": [
+        {
+          "question": "将未来收盘价混入当前特征属于？",
+          "choices": [
+            "更强探索",
+            "数据泄漏",
+            "正则化"
+          ],
+          "answer": 1,
+          "explanation": "决策时不可得的信息泄漏到训练。",
+          "remedy": "重做 06_lessons/06_选修专题/01_O10_股票交易.md 的公式与实践；核对：提交费用前后收益对照与泄漏检查；这是环境建模实验，不把回测直接当真实收益。"
+        },
+        {
+          "question": "100买102卖、双边各费用1，净收益？",
+          "choices": [
+            "0",
+            "2",
+            "1"
+          ],
+          "answer": 0,
+          "explanation": "102−100−1−1=0。",
+          "remedy": "重做 06_lessons/06_选修专题/01_O10_股票交易.md 的公式与实践；核对：提交费用前后收益对照与泄漏检查；这是环境建模实验，不把回测直接当真实收益。"
+        }
+      ],
+      "chapters": [
+        10
+      ],
+      "stage": "阶段六 · 选修专题",
+      "chapter_number": 1
+    },
+    {
+      "id": "O13",
+      "title": "文本环境：观察不完整时保留记忆",
+      "track": "optional",
+      "requires": [
+        "R06"
+      ],
+      "guide": "06_lessons/06_选修专题/02_O13_文本环境.md",
+      "evidence": "提交(B,T)词编号到(B,T,D)嵌入的shape图，列出未知词/截断/动作合法性检查。",
+      "quiz": [
+        {
+          "question": "(B,T)中T通常表示？",
+          "choices": [
+            "时间/序列长度",
+            "网络层数",
+            "奖励"
+          ],
+          "answer": 0,
+          "explanation": "序列每个位置有一个token编号。",
+          "remedy": "重做 06_lessons/06_选修专题/02_O13_文本环境.md 的公式与实践；核对：提交(B,T)词编号到(B,T,D)嵌入的shape图，列出未知词/截断/动作合法性检查。"
+        },
+        {
+          "question": "当前观察相同但历史不同，最佳动作一定相同吗？",
+          "choices": [
+            "一定",
+            "不一定",
+            "必须停止学习"
+          ],
+          "answer": 1,
+          "explanation": "部分可观察任务可能需要历史信息。",
+          "remedy": "重做 06_lessons/06_选修专题/02_O13_文本环境.md 的公式与实践；核对：提交(B,T)词编号到(B,T,D)嵌入的shape图，列出未知词/截断/动作合法性检查。"
+        }
+      ],
+      "chapters": [
+        13
+      ],
+      "stage": "阶段六 · 选修专题",
+      "chapter_number": 2
+    },
+    {
+      "id": "O14",
+      "title": "Web导航：坐标动作与示范学习",
+      "track": "optional",
+      "requires": [
+        "O13",
+        "R11"
+      ],
+      "guide": "06_lessons/06_选修专题/03_O14_网页导航.md",
+      "evidence": "提交角点与中心点的坐标测试、示范与训练/测试任务分离方案；不在真实账户页面做训练。",
+      "quiz": [
+        {
+          "question": "行为克隆直接学习的标签通常是？",
+          "choices": [
+            "随机文件名",
+            "专家动作",
+            "环境源码"
+          ],
+          "answer": 1,
+          "explanation": "示范提供状态下应采取的动作。",
+          "remedy": "重做 06_lessons/06_选修专题/03_O14_网页导航.md 的公式与实践；核对：提交角点与中心点的坐标测试、示范与训练/测试任务分离方案；不在真实账户页面做训练。"
+        },
+        {
+          "question": "网格解码应优先检查？",
+          "choices": [
+            "颜色主题",
+            "字体",
+            "边界与坐标尺度"
+          ],
+          "answer": 2,
+          "explanation": "错误尺度会把正确动作映射到错误位置。",
+          "remedy": "重做 06_lessons/06_选修专题/03_O14_网页导航.md 的公式与实践；核对：提交角点与中心点的坐标测试、示范与训练/测试任务分离方案；不在真实账户页面做训练。"
+        }
+      ],
+      "chapters": [
+        14
+      ],
+      "stage": "阶段六 · 选修专题",
+      "chapter_number": 3
+    },
+    {
+      "id": "O17",
+      "title": "黑盒优化：不反传也能搜索参数",
+      "track": "optional",
+      "requires": [
+        "R09"
+      ],
+      "guide": "06_lessons/06_选修专题/04_O17_黑盒优化.md",
+      "evidence": "提交相同评价次数下随机搜索与ES的比较；把环境调用成本计入预算。",
+      "quiz": [
+        {
+          "question": "黑盒优化必须得到环境导数吗？",
+          "choices": [
+            "必须",
+            "不必须",
+            "只有GPU可以免除"
+          ],
+          "answer": 1,
+          "explanation": "只用适应度评价也能搜索。",
+          "remedy": "重做 06_lessons/06_选修专题/04_O17_黑盒优化.md 的公式与实践；核对：提交相同评价次数下随机搜索与ES的比较；把环境调用成本计入预算。"
+        },
+        {
+          "question": "公平预算应统计？",
+          "choices": [
+            "所有候选参数的环境评价",
+            "仅最佳候选",
+            "只算优化代码行数"
+          ],
+          "answer": 0,
+          "explanation": "被丢弃候选也消耗采样。",
+          "remedy": "重做 06_lessons/06_选修专题/04_O17_黑盒优化.md 的公式与实践；核对：提交相同评价次数下随机搜索与ES的比较；把环境调用成本计入预算。"
+        }
+      ],
+      "chapters": [
+        17
+      ],
+      "stage": "阶段六 · 选修专题",
+      "chapter_number": 4
+    },
+    {
+      "id": "O18",
+      "title": "探索：外在回报和内在奖励分开看",
+      "track": "optional",
+      "requires": [
+        "R13"
+      ],
+      "guide": "06_lessons/06_选修专题/05_O18_探索与内在奖励.md",
+      "evidence": "提交一个bonus上升但任务目标没改善的反例；能区分更爱探索与更会完成任务。",
+      "quiz": [
+        {
+          "question": "内在奖励上升是否必然代表任务更好？",
+          "choices": [
+            "是",
+            "否",
+            "只要beta大就是"
+          ],
+          "answer": 1,
+          "explanation": "必须分离任务目标与训练奖励。",
+          "remedy": "重做 06_lessons/06_选修专题/05_O18_探索与内在奖励.md 的公式与实践；核对：提交一个bonus上升但任务目标没改善的反例；能区分更爱探索与更会完成任务。"
+        },
+        {
+          "question": "比较探索机制先固定？",
+          "choices": [
+            "交互预算与其他设置",
+            "只固定图颜色",
+            "不需固定任何东西"
+          ],
+          "answer": 0,
+          "explanation": "否则看不出改进来自探索还是额外采样。",
+          "remedy": "重做 06_lessons/06_选修专题/05_O18_探索与内在奖励.md 的公式与实践；核对：提交一个bonus上升但任务目标没改善的反例；能区分更爱探索与更会完成任务。"
+        }
+      ],
+      "chapters": [
+        18
+      ],
+      "stage": "阶段六 · 选修专题",
+      "chapter_number": 5
+    },
+    {
+      "id": "O19",
+      "title": "RLHF：偏好、奖励模型与策略优化",
+      "track": "optional",
+      "requires": [
+        "R13"
+      ],
+      "guide": "06_lessons/06_选修专题/06_O19_人类反馈强化学习.md",
+      "evidence": "提交偏好数据划分、标注分歧和reward hacking测试；用小例子学习，不启动大模型训练。",
+      "quiz": [
+        {
+          "question": "奖励模型高分等于真实目标满足吗？",
+          "choices": [
+            "总是",
+            "模型越大越必然",
+            "不保证"
+          ],
+          "answer": 2,
+          "explanation": "代理奖励可能被策略利用。",
+          "remedy": "重做 06_lessons/06_选修专题/06_O19_人类反馈强化学习.md 的公式与实践；核对：提交偏好数据划分、标注分歧和reward hacking测试；用小例子学习，不启动大模型训练。"
+        },
+        {
+          "question": "偏好标签通常表示？",
+          "choices": [
+            "两段行为更偏好哪一段",
+            "每个参数的梯度",
+            "未来所有正确动作"
+          ],
+          "answer": 0,
+          "explanation": "比较标签与逐步专家动作是不同监督信号。",
+          "remedy": "重做 06_lessons/06_选修专题/06_O19_人类反馈强化学习.md 的公式与实践；核对：提交偏好数据划分、标注分歧和reward hacking测试；用小例子学习，不启动大模型训练。"
+        }
+      ],
+      "chapters": [
+        19
+      ],
+      "stage": "阶段六 · 选修专题",
+      "chapter_number": 6
+    },
+    {
+      "id": "O20",
+      "title": "MuZero：在学到的模型中搜索",
+      "track": "optional",
+      "requires": [
+        "R14"
+      ],
+      "guide": "06_lessons/06_选修专题/07_O20_MuZero与模型搜索.md",
+      "evidence": "提交价值符号测试和访问次数→策略分布手算；先不启动漫长自对弈。",
+      "quiz": [
+        {
+          "question": "MuZero通常在什么状态表示里推演？",
+          "choices": [
+            "学到的潜在状态",
+            "必须完整像素重建",
+            "文件名"
+          ],
+          "answer": 0,
+          "explanation": "模型学习支持价值/奖励/策略预测的表示。",
+          "remedy": "重做 06_lessons/06_选修专题/07_O20_MuZero与模型搜索.md 的公式与实践；核对：提交价值符号测试和访问次数→策略分布手算；先不启动漫长自对弈。"
+        },
+        {
+          "question": "双人零和价值回传要检查？",
+          "choices": [
+            "图片分辨率",
+            "玩家视角与符号",
+            "优化器名字"
+          ],
+          "answer": 1,
+          "explanation": "视角错了会把对手优势误当己方优势。",
+          "remedy": "重做 06_lessons/06_选修专题/07_O20_MuZero与模型搜索.md 的公式与实践；核对：提交价值符号测试和访问次数→策略分布手算；先不启动漫长自对弈。"
+        }
+      ],
+      "chapters": [
+        20
+      ],
+      "stage": "阶段六 · 选修专题",
+      "chapter_number": 7
+    },
+    {
+      "id": "O21",
+      "title": "离散优化：学习启发式并验证搜索",
+      "track": "optional",
+      "requires": [
+        "O20"
+      ],
+      "guide": "06_lessons/06_选修专题/08_O21_离散优化.md",
+      "evidence": "提交成功率、解长、扩展节点数与时间；对小图用穷举已知最短路核对。",
+      "quiz": [
+        {
+          "question": "找到一个解是否一定最优？",
+          "choices": [
+            "是",
+            "否",
+            "用了神经网络就是"
+          ],
+          "answer": 1,
+          "explanation": "启发式、剪枝和预算都可能影响最优性。",
+          "remedy": "重做 06_lessons/06_选修专题/08_O21_离散优化.md 的公式与实践；核对：提交成功率、解长、扩展节点数与时间；对小图用穷举已知最短路核对。"
+        },
+        {
+          "question": "只报告成功率漏掉什么？",
+          "choices": [
+            "解长度和搜索成本",
+            "文件扩展名",
+            "编辑器主题"
+          ],
+          "answer": 0,
+          "explanation": "解质量和成本同样重要。",
+          "remedy": "重做 06_lessons/06_选修专题/08_O21_离散优化.md 的公式与实践；核对：提交成功率、解长、扩展节点数与时间；对小图用穷举已知最短路核对。"
+        }
+      ],
+      "chapters": [
+        21
+      ],
+      "stage": "阶段六 · 选修专题",
+      "chapter_number": 8
+    },
+    {
+      "id": "O22",
+      "title": "多智能体：对手也在改变",
+      "track": "optional",
+      "requires": [
+        "R14"
+      ],
+      "guide": "06_lessons/06_选修专题/09_O22_多智能体.md",
+      "evidence": "提交跨对手交叉评估表，不仅自对弈分数；完成阶段考试D并回顾选修目标。",
+      "quiz": [
+        {
+          "question": "环境非平稳的一个来源？",
+          "choices": [
+            "Python变量名",
+            "其他agent策略在变",
+            "截图颜色"
+          ],
+          "answer": 1,
+          "explanation": "交互对象的行为分布随训练改变。",
+          "remedy": "重做 06_lessons/06_选修专题/09_O22_多智能体.md 的公式与实践；核对：提交跨对手交叉评估表，不仅自对弈分数；完成阶段考试D并回顾选修目标。"
+        },
+        {
+          "question": "集中训练信息能否默认用于分散执行？",
+          "choices": [
+            "都可以",
+            "只要训练分数高",
+            "需检查执行时是否可得"
+          ],
+          "answer": 2,
+          "explanation": "部署时不可见的信息会造成训练/执行不一致。",
+          "remedy": "重做 06_lessons/06_选修专题/09_O22_多智能体.md 的公式与实践；核对：提交跨对手交叉评估表，不仅自对弈分数；完成阶段考试D并回顾选修目标。"
+        }
+      ],
+      "chapters": [
+        22
+      ],
+      "stage": "阶段六 · 选修专题",
+      "chapter_number": 9
+    }
+  ]
+}

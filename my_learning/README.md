@@ -1,25 +1,28 @@
 # 我的强化学习笔记
 
+**Python薄弱、没有机器学习基础：请先打开[零基础陪学入口](START_HERE.md)。** 新路线把每天做什么、具体视频选段、公式手算、练习反馈和补课位置串起来，并用 `python my_learning/coach.py` 保存跨次学习进度。
+
 这是一套从零基础到能够独立实现、训练和诊断强化学习算法的学习系统，以 *Deep Reinforcement Learning Hands-On, Third Edition* 的 22 章为主线，并链接当前仓库的真实源码。
 
 完整的逐章、逐主题核对结果见 [原书覆盖审计](05_reference/COVERAGE.md)。
 
-## 使用方法
+## 只走这一条学习路线
 
-1. 第一次使用先打开[从这里开始](00_start_here/README.md)，不要直接跳进高级章节。
-2. 在项目根目录按 `requirements.txt` 建立 Python 3.11 环境，启动 `jupyter lab my_learning`。
-3. 没有机器学习基础：先完成预备篇（含 4B/5B/6B/7B 四个补课 notebook 和自动批改练习）；已有基础可直接做入学测试。
-4. 每章按“手算 → 代码 → 改参 → 自测”学习，并在 Chapter05/06 后完成两个引导项目。
-5. Atari、MuJoCo、TextWorld、浏览器环境、MAgent 等重型章节按各章 `requirements.txt` 配置。
+1. 打开[START_HERE：日常入口](START_HERE.md)，再进入[六阶段目录](06_lessons/README.md)中的当前阶段。
+2. 从阶段目录打开当前学习章节，按“本章导学 → 视频 → 手算 → 实践 → 反馈 → 本章总结”学习。
+3. 跟章节底部的“下一步”走；阶段结束先做综合复盘，不直接跳进高级章节。
+4. 章节引用到哪份notebook或源码，就只打开对应材料；不需要把所有目录按文件顺序读完。
+
+**P是前置基础、R是强化学习主线、O是选修。** 它们是保存进度的稳定课号，不是原书章号。课卡已归入六个中文阶段目录；旧进度和测验命令仍然有效。
 
 > 这些是原创学习笔记和小型实现，不复制原书正文。公式符号尽量保持教材常用约定；若与具体脚本变量名不同，以语义为准。
 
-## 开始前与学完后
+## 配套资料（不是另一套学习顺序）
 
 | 材料 | 用途 |
 |---|---|
-| [从这里开始](00_start_here/README.md) | 环境、学习顺序和入门诊断 |
-| [长期学习计划](05_reference/LONG_TERM_PLAN.md) | 6 个月路线、主线/选读章节、章节前置知识矩阵、算力与外部资源 |
+| [入门操作资料](00_start_here/README.md) | 章节引用时查环境、第一周操作和公式慢讲 |
+| [长期学习计划](05_reference/LONG_TERM_PLAN.md) | 已有编程基础的旧版预算与参考矩阵；不替代零基础日常路线 |
 | [零基础预备篇](01_prerequisites/Prerequisite00_Index.ipynb) | Python、NumPy、绘图、数学、概率、ML、神经网络从零、PyTorch、CNN/序列、Gymnasium、老虎机与入学测试 |
 | [00 · 学习路线与入门诊断](00_start_here/00_Study_Roadmap.ipynb) | 摸底、选择路线、阶段过关标准 |
 | [阶段考试](04_assessments/Milestone_Exams.ipynb) | 检查能否闭卷推导、实现和排错 |
@@ -31,7 +34,7 @@
 | [排错手册](05_reference/DEBUGGING_PLAYBOOK.md) | 从环境契约到评估协议的排查顺序 |
 | [中英术语表](05_reference/GLOSSARY.md) | 快速查找常用概念及一句话解释 |
 
-## 章节索引
+## 原书伴读索引（按当前学习章节引用查阅）
 
 | 章 | Notebook | 原书英文主题 |
 |---:|---|---|
@@ -58,20 +61,14 @@
 | 21 | [离散优化中的 RL](02_chapters/Chapter21.ipynb) | `RL in Discrete Optimization` |
 | 22 | [多智能体强化学习](02_chapters/Chapter22.ipynb) | `Multi-Agent RL` |
 
-## 学习路线建议
-
-- **没有机器学习基础：**环境与 Jupyter → Prerequisite00–08（含 04B、05B、06B、07B）→ Chapter01–05 → GridWorld 项目 → Chapter06 → DQN 项目。
-- **基础主线：**01 → 06，理解 MDP、Gym、PyTorch、Bellman、Q-learning 与 DQN。
-- **价值方法：**07 → 10，学习工程抽象、DQN 扩展、性能与交易环境建模。
-- **策略方法：**11 → 18，依次掌握 policy gradient、actor-critic、连续控制、PPO/SAC 与探索。
-- **高级应用：**19 → 22，学习 RLHF、MuZero、离散优化与多智能体 RL。
-
-**主线与选读：**主线是 01–09、11、12、15、16；10、17、18 为推荐选读；13、14、19–22 是需要额外前置知识或外部依赖的专题，按兴趣选择。详见[长期学习计划](05_reference/LONG_TERM_PLAN.md)。
+原书章节号用于查教材；学习顺序以[六阶段目录](06_lessons/README.md)为准。例如PyTorch先在P11学习，Q-learning与DQN则拆成R05、R06两章。选修不阻塞主线。
 
 ## 目录结构
 
 ```text
-00_start_here       环境、使用方式与学习路线
+START_HERE.md      唯一日常学习入口
+06_lessons         六阶段 → 学习章节（导学、步骤、反馈、小结）
+00_start_here       入门操作与环境/公式辅助资料
 01_prerequisites    零基础预备篇（含自动批改练习）与入学测试
 02_chapters         原书 22 章伴读
 03_guided_projects  完整引导项目、实验模板、开放项目
@@ -82,4 +79,4 @@ _tools              生成与验证脚本
 
 ## 维护说明
 
-`_tools` 中四个 build 脚本分别生成章节、预备篇、综合材料和引导项目；`foundations_*.py` 是预备篇补课内容，`exercise_kit.py` 是自动批改练习工具。修改内容后运行生成器，再执行 `python my_learning/_tools/validate_notebooks.py --execute`（会同时用参考答案自检全部练习）。
+学习者不必打开 `_tools`、`course.json` 或 `IMPLEMENTATION_PLAN.md`。生成器会重写课程文件，个人作业请另存；维护方式见[_tools说明](_tools/README.md)。

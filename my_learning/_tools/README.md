@@ -1,5 +1,13 @@
 # 生成与验证工具
 
+- `course_content.py`：逐课目标、视频选段、手算、实践、检查题的维护源。
+- `course_structure.py`：六阶段分组、阶段开始/验收与35章主题小结；课号稳定，章序在阶段内编号。
+- `build_course.py`：生成 `06_lessons`、`course.json` 和Python小步自动批改notebook；不修改个人进度。
+- `../coach.py`：标准库学习反馈工具；`status / lesson / quiz / record / report`。选择题自动检查，实践为自报待复核。
+- `test_coach.py`：反馈保存、补课/先修行为与课程结构测试；运行 `python -m unittest discover -s my_learning/_tools -p 'test_coach.py'`。
+
+学习者不要运行生成器覆盖自己的作业。维护者修改课程后运行 `python my_learning/_tools/build_course.py`，再运行测试与notebook验证。
+
 - `build_notebooks.py`：生成 22 章伴读 Notebook 与总目录。
 - `build_prerequisites.py`：生成零基础预备篇（13 个 notebook）。
 - `foundations_probability.py`、`foundations_neural_net.py`、`foundations_cnn.py`、`foundations_bandit.py`：4B/5B/6B/7B 补课 notebook 的内容。

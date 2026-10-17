@@ -19,3 +19,7 @@ venv/
 .aws
 .omc
 .env
+
+my_learning/progress.json
+my_learning/progress.json.*
+my_learning/scratch/

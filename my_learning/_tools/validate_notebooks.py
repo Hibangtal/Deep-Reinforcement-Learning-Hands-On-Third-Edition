@@ -17,6 +17,7 @@ from exercise_kit import selftest_notebook  # noqa: E402
 
 HERE = Path(__file__).resolve().parent.parent
 SUPPLEMENTS = {
+    "00_start_here/02_Python_Baby_Steps.ipynb": ["Python小步自动批改", "自动批改练习"],
     "00_start_here/00_Study_Roadmap.ipynb": ["十分钟摸底", "四阶段路线", "什么时候算“掌握”"],
     "04_assessments/Milestone_Exams.ipynb": ["关卡 A", "关卡 B", "关卡 C", "关卡 D"],
     "03_guided_projects/Experiment_Template.ipynb": ["多个随机种子", "置信带", "最小报告结构"],
